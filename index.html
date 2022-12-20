@@ -8,80 +8,31 @@
     <py-script src="./main.py"></py-script> 
     <main class = "container">
       <h0>W-K 암호</h0>
-        <div class="form__group field">
-          <input id = "input_text" type="text" class="form__field" placeholder="내용을 입력하세요">
-          <button id = "encode" pys-onClick ="wkinandout">encode</button>
+        <div>
+          <input id = "input_text" type="text" placeholder="내용을 입력하세요">
+          <button id = "encode" pys-onClick ="wkinandout" class="button btnPush btnLightBlue">encode</button>
         </div> 
         <h1 id = "output_text">output</h1>
     </main>
   </body>
   <style>
-  @import url(https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700);
   @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 
-$primary: #11998e;
-$secondary: #38ef7d;
-$white: #fff;
-$gray: #9b9b9b;
-.form__group {
-  position: relative;
-  padding: 15px 0 0;
-  margin-top: 10px;
-  width: 50%;
-}
-
-.form__field {
-  font-family: inherit;
-  width: 100%;
-  border: 0;
-  border-bottom: 2px solid $gray;
-  outline: 0;
-  font-size: 1.3rem;
-  color: $white;
-  padding: 7px 0;
-  background: transparent;
-  transition: border-color 0.2s;
-
-  &::placeholder {
-    color: transparent;
+  .btnLightBlue.btnPush {
+    box-shadow: 0px 5px 0px 0px #1E8185;
   }
 
-  &:placeholder-shown ~ .form__label {
-    font-size: 1.3rem;
-    cursor: text;
-    top: 20px;
+  .btnLightBlue {
+    background: #5DC8CD;
   }
-}
 
-.form__field:focus {
-  ~ .form__label {
-    position: absolute;
-    top: 0;
-    display: block;
-    transition: 0.2s;
-    font-size: 1rem;
-    color: $primary;
-    font-weight:700;    
+  body {
+    font-family: 'Spoqa Han Sans Neo', serif;
+    font-size: 30px;
+    line-height: 34px;
+    color: #333;
+    background: #ececec;
+    overflow-y: scroll;
   }
-  padding-bottom: 6px;  
-  font-weight: 700;
-  border-width: 3px;
-  border-image: linear-gradient(to right, $primary,$secondary);
-  border-image-slice: 1;
-}
-
-.form__field{
-  &:required,&:invalid { box-shadow:none; }
-}
-    
-body {
-  font-family: 'Josefin Slab', serif;
-  font-family: 'Spoqa Han Sans Neo', serif;
-  font-size: 20px;
-  line-height: 24px;
-  color: #333;
-  background: #ececec;
-  overflow-y: scroll;
-}
-</style>
+  </style>
 </html>
