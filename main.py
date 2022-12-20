@@ -99,6 +99,6 @@ def wk_decode(t):
 input_text = Element("input_text")
 output_text = Element("output_text")
 
-def wkinandout():
+def wkinandout(*args):
     output_text.element.innerText = wk_encode(input_text.value)
     input_text.clear()
