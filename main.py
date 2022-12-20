@@ -105,7 +105,7 @@ def wk_decode(t):
 
         elif t[i]=="0" and t[i+1]=="0" and int("".join(t[i+1:i+4]))<=33 and int("".join(t[i+1:i+4]))>=11:
             if "".join(t[i:i+4]) in reverse_wk.keys():
-                if len(outp)>2:
+                if len(outp)>=1:
                     if type(outp[-1])==list:
                         outp[-1].append(list((reverse_wk["".join(t[i:i+4])]))[1])
                     else:
