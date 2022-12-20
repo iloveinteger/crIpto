@@ -84,16 +84,49 @@ def wk_decode(t):
         if i>=l-1:
             break
 
-        if t[i]=="1" or t[i]=="2" or t[i]=="3" or t[i]=="4":
-            outp.append(reverse_wk[t[i]+t[i+1]])
-            i += 2
-        elif t[i]=="0" and t[i+1]=="0" and int("".join(t[i+1:i+4]))<=33 and int("".join(t[i+1:i+4]))>=11:
-            outp.append(list((reverse_wk["".join(t[i:i+4])]))[1])
-            i += 4
-        else:
-            outp.append(reverse_wk["".join(t[i:i+4])])
-            i += 4
+        if t[i]=="1" or t[i]=="2":
+            if t[i]+t[i+1] in reverse_wk.keys():
+                outp.append(reverse_wk[t[i]+t[i+1]])
+                i += 2
+            else:
+                return "wrong code"
 
+        elif t[i]=="3" or t[i]=="4":
+            if t[i]+t[i+1] in reverse_wk.keys():
+                if outp[-1] in letters[0]:
+                    outp.append([outp[-1],reverse_wk[t[i]+t[i+1]]])
+                    outp.pop(-2)
+                    i += 2
+                else:
+                    outp.append(reverse_wk[t[i]+t[i+1]])
+                    i += 2
+            else:
+                return "wrong code"
+
+        elif t[i]=="0" and t[i+1]=="0" and int("".join(t[i+1:i+4]))<=33 and int("".join(t[i+1:i+4]))>=11:
+            if "".join(t[i:i+4]) in reverse_wk.keys():
+                if len(outp)>2:
+                    if type(outp[-1])==list:
+                        outp[-1].append(list((reverse_wk["".join(t[i:i+4])]))[1])
+                    else:
+                        outp.append(list((reverse_wk["".join(t[i:i+4])]))[1])
+                else:
+                    outp.append(list((reverse_wk["".join(t[i:i+4])]))[1])
+                i += 4
+            else:
+                return "wrong code"
+        else:
+            if "".join(t[i:i+4]) in reverse_wk.keys():
+                outp[-1].append(list((reverse_wk["".join(t[i:i+4])]))[1])
+                i += 4
+            else:
+                return "wrong code"
+
+    for j in outp:
+        if len(j)==2:
+            j.append("")
+
+    outp = koreangather(outp)
     return "".join(outp)
 
 input_text = Element("input_text")
