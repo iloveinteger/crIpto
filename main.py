@@ -134,4 +134,6 @@ output_text = Element("output_text")
 
 def wkinandout(*args):
     output_text.element.innerText = wk_encode(input_text.value)
+    if output_text.element.innerText=="":
+        output_text.element.innerText=" "
     input_text.clear()
