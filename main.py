@@ -142,7 +142,7 @@ input_text1 = Element("input_text1")
 output_text1 = Element("output_text1")
 
 def wkoutandin(*args):
-    output_text1.element.innerText = wk_encode(input_text1.value)
+    output_text1.element.innerText = wk_decode(input_text1.value)
     if output_text1.element.innerText.replace(" ","")=="":
         output_text1.element.innerText="..."
     input_text1.clear()
