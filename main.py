@@ -129,11 +129,20 @@ def wk_decode(t):
     outp = koreangather(outp)
     return "".join(outp)
 
-input_text = Element("input_text")
-output_text = Element("output_text")
+input_text0 = Element("input_text0")
+output_text0 = Element("output_text0")
 
 def wkinandout(*args):
-    output_text.element.innerText = wk_encode(input_text.value)
-    if output_text.element.innerText.replace(" ","")=="":
-        output_text.element.innerText="..."
-    input_text.clear()
+    output_text0.element.innerText = wk_encode(input_text0.value)
+    if output_text0.element.innerText.replace(" ","")=="":
+        output_text0.element.innerText="..."
+    input_text0.clear()
+    
+input_text1 = Element("input_text1")
+output_text1 = Element("output_text1")
+
+def wkoutandin(*args):
+    output_text1.element.innerText = wk_encode(input_text1.value)
+    if output_text1.element.innerText.replace(" ","")=="":
+        output_text1.element.innerText="..."
+    input_text1.clear()
