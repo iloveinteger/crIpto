@@ -93,17 +93,21 @@ def wk_decode(t):
 
         elif t[i]=="3" or t[i]=="4":
             if t[i]+t[i+1] in reverse_wk.keys():
-                if outp[-1] in letters[0]:
-                    outp.append([outp[-1],reverse_wk[t[i]+t[i+1]]])
-                    outp.pop(-2)
-                    i += 2
+                if len(outp)>=1:
+                    if outp[-1] in letters[0]:
+                        outp.append([outp[-1],reverse_wk[t[i]+t[i+1]]])
+                        outp.pop(-2)
+                        i += 2
+                    else:
+                        outp.append(reverse_wk[t[i]+t[i+1]])
+                        i += 2
                 else:
                     outp.append(reverse_wk[t[i]+t[i+1]])
                     i += 2
             else:
                 return "wrong code"
 
-        elif t[i]=="0" and t[i+1]=="0" and int("".join(t[i+1:i+4]))<=33 and int("".join(t[i+1:i+4]))>=11:
+        elif t[i]=="0" and t[i+1]=="0" and int("".join(t[i+2:i+4]))<=33 and int("".join(t[i+2:i+4]))>=11:
             if "".join(t[i:i+4]) in reverse_wk.keys():
                 if len(outp)>=1:
                     if type(outp[-1])==list:
@@ -117,7 +121,7 @@ def wk_decode(t):
                 return "wrong code"
         else:
             if "".join(t[i:i+4]) in reverse_wk.keys():
-                outp[-1].append(list((reverse_wk["".join(t[i:i+4])]))[1])
+                outp.append(reverse_wk["".join(t[i:i+4])])
                 i += 4
             else:
                 return "wrong code"
@@ -128,7 +132,8 @@ def wk_decode(t):
 
     outp = koreangather(outp)
     return "".join(outp)
-
+  
+  
 input_text0 = Element("input_text0")
 output_text0 = Element("output_text0")
 
